@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/common_spacing"
+    >
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="@dimen/post_avatar_space"
+        android:layout_height="@dimen/post_avatar_space"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:srcCompat="@tools:sample/avatars"
+        android:contentDescription="@string/avatar_description" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/authorName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_spacing"
+        android:ellipsize="end"
+        android:singleLine="true"
+        app:layout_constraintBottom_toTopOf="@id/date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/avatar"
+        app:layout_constraintTop_toTopOf="@id/avatar"
+        app:layout_constraintEnd_toStartOf="@id/options"
+        android:layout_marginEnd="8dp"
+
+        tools:text="Название поста" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:ellipsize="end"
+
+        app:layout_constraintStart_toStartOf="@id/authorName"
+        app:layout_constraintEnd_toEndOf="@id/authorName"
+        app:layout_constraintTop_toBottomOf="@id/authorName"
+        tools:text="19/06/2022"
+
+        app:layout_constraintBottom_toBottomOf="@id/avatar"
+        />
+
+    <Button
+        android:id="@+id/options"
+        style="@style/Widget.AppTheme.ShareButton"
+        app:iconGravity="end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/options"
+        app:icon="@drawable/ic_options_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/avatar" />
+    <androidx.constraintlayout.widget.Barrier
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/headerBarrier"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="avatar, date, options"
+        />
+
+    <Button
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/headerBarrier"
+        android:textColor="@color/black"
+        android:background="@android:color/transparent"
+        tools:text="dsadasdasdasdasdas" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:id="@+id/url"/>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/video"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@id/text"
+        app:layout_constraintBottom_toTopOf="@id/like"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/among_us"
+        android:contentDescription="@string/video" />
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.AppTheme.LikeCheckbox"
+        android:id="@+id/like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        app:layout_constraintTop_toBottomOf="@+id/video"
+        app:icon="@drawable/ic_heart_check_24"
+        android:contentDescription="@string/like"
+        tools:text="121212"
+
+    />
+
+    <Button
+        android:id="@+id/share"
+        style="@style/Widget.AppTheme.ShareButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/share"
+        tools:text="2121564"
+        android:textColor="?attr/colorControlNormal"
+        app:icon="@drawable/ic_share_24"
+        app:layout_constraintStart_toEndOf="@+id/like"
+        app:layout_constraintTop_toTopOf="@id/like" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/visible"
+        android:src="@drawable/ic_visibility_24"
+        app:layout_constraintEnd_toStartOf="@id/visible_count"
+        app:layout_constraintTop_toTopOf="@id/like"
+        app:layout_constraintBottom_toBottomOf="@id/like"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="@string/visible" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/visible_count"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/like"
+        app:layout_constraintBottom_toBottomOf="@id/like"
+        tools:text="15"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

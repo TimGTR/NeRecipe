@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">НМедиа</string>
+    <string name="hello_kotlin">Привет, Котлин!</string>
+    <string name="avatar_description">Author avatar</string>
+    <string name="options">опции</string>
+    <string name="like">like</string>
+    <string name="share">share</string>
+    <string name="visible">visible</string>
+    <string name="remove">Удалить</string>
+    <string name="post_text">Текст поста</string>
+    <string name="description">Описание</string>
+    <string name="edit">Редактировать</string>
+    <string name="pencilImage">Карандаш</string>
+    <string name="chooser_share_post">Поделиться</string>
+    <string name="description_post_save">Сохранить</string>
+    <string name="add_post">Добавить пост</string>
+    <string name="video">Видео</string>
+    <string name="URL">Вставьте ссылку на видео</string>
+    <string name="post_text_content">Введите текст поста</string>
+    <string name="video_open">Открыть видео</string>
+</resources>
