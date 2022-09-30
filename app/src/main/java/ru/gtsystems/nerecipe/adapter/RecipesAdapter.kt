@@ -10,43 +10,44 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.gtsystems.nerecipe.R
 import ru.gtsystems.nerecipe.databinding.PostCardBinding
 import ru.gtsystems.nerecipe.repository.Post
+import ru.gtsystems.nerecipe.repository.Recipe
 
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
 
 
-class PostsAdapter(
-    private val interactionListener: PostInteractionListener
-) : ListAdapter<Post, PostsAdapter.ViewHolder>(DiffCallback) {
+class RecipesAdapter(
+    private val interactionListener: RecipeListener
+) : ListAdapter<Recipe, RecipesAdapter.ViewHolder>(DiffCallback) {
 
 
-    private object DiffCallback : DiffUtil.ItemCallback<Post>() {
-        override fun areItemsTheSame(oldItem: Post, newItem: Post) =
+    private object DiffCallback : DiffUtil.ItemCallback<Recipe>() {
+        override fun areItemsTheSame(oldItem: Recipe, newItem: Recipe) =
             oldItem.id == newItem.id
 
-        override fun areContentsTheSame(oldItem: Post, newItem: Post) =
+        override fun areContentsTheSame(oldItem: Recipe, newItem:Recipe) =
             oldItem == newItem
 
     }
 
     class ViewHolder(
         private val binding: PostCardBinding,
-        listener: PostInteractionListener
+        listener: RecipeListener
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        private lateinit var post: Post
+        private lateinit var recipe: Recipe
         private val popupMenu by lazy {
             PopupMenu(itemView.context, binding.options).apply {
                 inflate(R.menu.options_post)
                 setOnMenuItemClickListener { menuItem ->
                     when (menuItem.itemId) {
                         R.id.remove -> {
-                            listener.onRemoveClicked(post)
+                            listener.onRemoveClicked(recipe)
                             true
                         }
                         R.id.edit -> {
-                            listener.onEditClicked(post)
+                            listener.onEditClicked(recipe)
                             true
                         }
                         else -> false
@@ -58,50 +59,35 @@ class PostsAdapter(
 
         init {
             binding.like.setOnClickListener {
-                listener.onLikeClicked(post)
+                listener.onLikeClicked(recipe)
             }
-            binding.share.setOnClickListener {
-                listener.onShareClicked(post)
-            }
+
             binding.text.setOnClickListener {
-                listener.viewPostDetails(post)
+                listener.viewRecipeDetails(recipe)
             }
             binding.video.setOnClickListener {
-                listener.onVideoClicked(post)
+                listener.onVideoC
+
             }
 
 
 
         }
 
-        fun bind(post: Post) {
-            this.post = post
+        fun bind(recipe: Recipe) {
+            this.recipe = recipe
             with(binding) {
-                authorName.text = post.author
-                date.text = post.published
-                text.text = post.content
-                like.text = remakeCount(post.likesCount)
-                share.text = remakeCount(post.shareCount)
-                visibleCount.text = remakeCount(post.visibleCount)
-                like.isChecked = post.likedByMe
-                url.text = post.videoUrl
+                authorName.text = recipe.author
+                name.text = recipe.name
+                name.text = recipe.content
+
+
                 options.setOnClickListener { popupMenu.show() }
 
             }
         }
 
-        private fun remakeCount(count: Int) =
-            if (count < 1000) {
-                count.toString()
-            } else if (count < 1_000_000) {
-                val df = DecimalFormat("#.#")
-                df.roundingMode = RoundingMode.CEILING
-                "${df.format((count / 1000.0))}K"
-            } else {
-                val df = DecimalFormat("#.#")
-                df.roundingMode = RoundingMode.CEILING
-                "${df.format((count / 1000000.0))}M"
-            }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

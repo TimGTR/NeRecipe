@@ -4,5 +4,5 @@
     android:layout_height="match_parent">
     <include
         android:id="@+id/postLayout"
-        layout="@layout/post_card"/>
+        layout="@layout/recipe_card"/>
 </ScrollView>

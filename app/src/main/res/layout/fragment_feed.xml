@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.FeedFragment"
+    tools:context=".ui.FeedFragment"
     >
 
 
@@ -17,7 +17,7 @@
         app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="25dp"
-        tools:listitem="@layout/post_card" />
+        tools:listitem="@layout/recipe_card" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"

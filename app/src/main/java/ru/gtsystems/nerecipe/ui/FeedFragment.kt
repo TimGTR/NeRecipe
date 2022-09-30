@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import ru.gtsystems.nerecipe.R
 import ru.gtsystems.nerecipe.adapter.PostInteractionListener
-import ru.gtsystems.nerecipe.adapter.PostsAdapter
+import ru.gtsystems.nerecipe.adapter.RecipesAdapter
 import ru.gtsystems.nerecipe.databinding.FragmentFeedBinding
 import ru.gtsystems.nerecipe.repository.Post
 import ru.gtsystems.nerecipe.ui.FragmentPostDetail.Companion.IntArg
@@ -33,7 +33,7 @@ class FeedFragment : Fragment() {
         val viewModel: PostViewModel by viewModels(ownerProducer = ::requireParentFragment)
 
 
-        val adapter = PostsAdapter(object : PostInteractionListener {
+        val adapter = RecipesAdapter(object : PostInteractionListener {
             override fun onLikeClicked(post: Post) {
                 viewModel.onLikeClicked(post)
             }

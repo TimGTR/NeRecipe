@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import ru.gtsystems.nerecipe.R
 import ru.gtsystems.nerecipe.adapter.PostInteractionListener
-import ru.gtsystems.nerecipe.adapter.PostsAdapter
+import ru.gtsystems.nerecipe.adapter.RecipesAdapter
 import ru.gtsystems.nerecipe.databinding.FragmentPostBinding
 import ru.gtsystems.nerecipe.repository.Post
 import ru.gtsystems.nerecipe.ui.NewPostFragment.Companion.textArg
@@ -34,7 +34,7 @@ class FragmentPostDetail : Fragment() {
         val postId = arguments?.IntArg ?: -1
         viewModel.data.observe(viewLifecycleOwner) { posts ->
             val post = posts.find { it.id.toInt() == postId } ?: return@observe
-            val viewHolder = PostsAdapter.ViewHolder (binding.postLayout, object :
+            val viewHolder = RecipesAdapter.ViewHolder (binding.postLayout, object :
                 PostInteractionListener {
                 override fun onLikeClicked(post: Post) {
                     viewModel.onLikeClicked(post)
