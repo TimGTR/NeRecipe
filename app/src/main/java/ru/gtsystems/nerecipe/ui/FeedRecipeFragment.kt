@@ -13,6 +13,8 @@ import androidx.navigation.fragment.findNavController
 import ru.gtsystems.nerecipe.R
 import ru.gtsystems.nerecipe.adapter.RecipesAdapter
 import ru.gtsystems.nerecipe.databinding.EmptyFieldBinding
+import ru.gtsystems.nerecipe.repository.Recipe
+
 import ru.netology.nerecipe.ui.RecipeViewModel
 
 

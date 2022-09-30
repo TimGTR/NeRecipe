@@ -15,7 +15,7 @@
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topMenu"
-            android:backgroundTint="@color/teal_700"
+
             style="@style/Widget.MaterialComponents.Toolbar.Primary"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
@@ -38,13 +38,14 @@
         android:id="@+id/icon_background"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:contentDescription="@string/icon_background_description"
+
         android:src="@drawable/ic_launcher_foreground"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/textBackground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:visibility="visible" />
+        tools:visibility="visible"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/textBackground"

@@ -50,7 +50,7 @@
         android:name="ru.gtsystems.nerecipe.ui.RecipeUpdateFragment">
         <argument
             android:name="idRecipe"
-            app:argType="ru.gtsystems.nerecipe.dto.Recipe"
+            app:argType="ru.gtsystems.nerecipe.repository.Recipe"
             app:nullable="true" />
     </fragment>
 
@@ -67,7 +67,7 @@
         tools:layout="@layout/fragment_view_recipe">
         <argument
             android:name="viewRecipe"
-            app:argType="ru.gtsystems.nerecipe.dto.Recipe"
+            app:argType="ru.gtsystems.nerecipe.repository.Recipe"
             app:nullable="true" />
     </fragment>
 

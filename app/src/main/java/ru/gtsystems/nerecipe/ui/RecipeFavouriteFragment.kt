@@ -75,19 +75,19 @@ class RecipeFavouriteFragment : Fragment() {
 
         viewModel.updateRecipeFragment.observe(this) {
             val updatedRecipe = viewModel.updateRecipe.value
-            //val directions = FeedRecipeFragmentDirections.updateRecipeFragment(updatedRecipe)
-            findNavController().navigate(R.id.updateRecipeFragment)
+            val directions = FeedRecipeFragmentDirections.updateRecipeFragment(updatedRecipe)
+            findNavController().navigate(directions)
         }
 
         viewModel.singleFragment.observe(this) {
             val viewRecipe = viewModel.singleRecipe.value
-            //val directions = FeedRecipeFragmentDirections.recipeViewFragment(viewRecipe)
-            findNavController().navigate(R.id.recipeViewFragment)
+            val directions = FeedRecipeFragmentDirections.recipeViewFragment(viewRecipe)
+            findNavController().navigate(directions)
         }
 
         viewModel.filterFragment.observe(this) {
-            //val directions = FeedRecipeFragmentDirections.recipeFilterFragment()
-            findNavController().navigate(R.id.recipeFilterFragment)
+            val directions = FeedRecipeFragmentDirections.recipeFilterFragment()
+            findNavController().navigate(directions)
         }
     }
 

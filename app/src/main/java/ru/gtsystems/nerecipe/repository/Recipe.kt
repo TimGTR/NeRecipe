@@ -1,9 +1,8 @@
 package ru.gtsystems.nerecipe.repository
 
-import android.os.Parcelable
 import kotlinx.serialization.Serializable
 
-@Serializable
+//@Serializable
 data class Recipe(
     val id: Long,
     val title: String,
