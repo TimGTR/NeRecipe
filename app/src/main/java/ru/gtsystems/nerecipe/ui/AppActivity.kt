@@ -7,7 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.snackbar.Snackbar
 import ru.gtsystems.nerecipe.R
 import ru.gtsystems.nerecipe.databinding.ActivityAppBinding
-import ru.gtsystems.nerecipe.ui.NewPostFragment.Companion.textArg
+
 
 class AppActivity : AppCompatActivity() {
 
@@ -42,7 +42,7 @@ class AppActivity : AppCompatActivity() {
             val fragment =
                 supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
             fragment.navController
-                .navigate(R.id.action_feedFragment_to_newPostFragment, Bundle().apply {
+                .navigate(R.id.action_favoriteFragment_to_feedFragment, Bundle().apply {
                     textArg = text
                 })
 

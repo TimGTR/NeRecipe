@@ -2,16 +2,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/topBar"
+        android:backgroundTint="@color/teal_200"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topMenu"
@@ -21,57 +23,50 @@
             android:layout_height="?attr/actionBarSize"
             app:title="@string/app_name" />
 
+        <SearchView
+            android:id="@+id/searchView"
+            android:icon="@drawable/icon_search"
+            android:title="@string/search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:iconifiedByDefault="false"
+            app:backgroundTint="@color/teal_200"/>
+
     </com.google.android.material.appbar.AppBarLayout>
 
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listFavorite"
+        android:id="@+id/listRecipe"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/bottomToolbar"
         app:layout_constraintTop_toBottomOf="@id/topBar"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="-134dp"
-        tools:listitem="@layout/recipe_card" />
+        app:layout_constraintVertical_bias="0.0" />
 
-    <ImageView
-        android:id="@+id/icon_background"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:contentDescription="@string/icon_background_description"
-        android:src="@drawable/ic_launcher_foreground"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@id/textBackground"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:visibility="visible" />
 
-    <TextView
-        android:id="@+id/textBackground"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/buttonAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/text_background"
-        android:textColor="@color/teal_700"
-        android:visibility="gone"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/button_add_description"
+        app:layout_constraintBottom_toTopOf="@id/bottomToolbar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
+        app:srcCompat="@android:drawable/ic_input_add"
+        app:backgroundTint="@color/teal_200"/>
 
-    <TextView
-        android:id="@+id/textHint"
+    <Button
+        android:id="@+id/buttonClearFilter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/text_hint"
-        android:visibility="gone"
-        android:textSize="20sp"
+        android:text="@string/button_clear_filter"
+        android:layout_marginBottom="8dp"
+        android:visibility="invisible"
+        android:backgroundTint="@color/teal_200"
+        app:layout_constraintBottom_toTopOf="@id/bottomToolbar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textBackground"
-        tools:visibility="visible"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomToolbar"
@@ -80,6 +75,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_menu" />
+        app:menu="@menu/bottom_menu"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

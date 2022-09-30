@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">НМедиа</string>
+    <string name="app_name">НеРецепт</string>
     <string name="hello_kotlin">Привет, Котлин!</string>
     <string name="avatar_description">Author avatar</string>
     <string name="options">опции</string>

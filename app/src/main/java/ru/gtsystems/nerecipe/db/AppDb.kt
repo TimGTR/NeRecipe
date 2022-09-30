@@ -7,11 +7,11 @@ import androidx.room.RoomDatabase
 
 
 @Database(
-    entities = [PostEntity::class],
+    entities = [RecipeEntity::class],
     version = 1
 )
 abstract class AppDb : RoomDatabase() {
-    abstract val postDao: PostDao
+    abstract val recipeDao: RecipeDao
 
     companion object {
         @Volatile
@@ -19,15 +19,12 @@ abstract class AppDb : RoomDatabase() {
 
         fun getInstance(context: Context): AppDb {
             return instance ?: synchronized(this) {
-                instance ?: buildDataBase(context).also { instance = it }
+                instance ?: buildDatabase(context).also { instance = it }
             }
         }
 
-
-        private fun buildDataBase(context: Context) =
-            Room.databaseBuilder(
-                context, AppDb::class.java, "app.db"
-            ).allowMainThreadQueries()
-                .build()
+        private fun buildDatabase(context: Context) = Room.databaseBuilder(
+            context, AppDb::class.java, "appNeRecipe.db"
+        ).allowMainThreadQueries().build()
     }
 }

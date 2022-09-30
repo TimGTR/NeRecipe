@@ -1,44 +1,42 @@
 package ru.gtsystems.nerecipe.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import androidx.annotation.DrawableRes
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.gtsystems.nerecipe.R
-import ru.gtsystems.nerecipe.databinding.PostCardBinding
-import ru.gtsystems.nerecipe.repository.Post
+import ru.gtsystems.nerecipe.databinding.RecipeCardBinding
 import ru.gtsystems.nerecipe.repository.Recipe
-
-import java.math.RoundingMode
-import java.text.DecimalFormat
-
 
 
 class RecipesAdapter(
-    private val interactionListener: RecipeListener
+    private val interactionListener: RecipeInteractionListener
+
 ) : ListAdapter<Recipe, RecipesAdapter.ViewHolder>(DiffCallback) {
 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = RecipeCardBinding.inflate(inflater, parent, false)
 
-    private object DiffCallback : DiffUtil.ItemCallback<Recipe>() {
-        override fun areItemsTheSame(oldItem: Recipe, newItem: Recipe) =
-            oldItem.id == newItem.id
+        return ViewHolder(binding, interactionListener)
+    }
 
-        override fun areContentsTheSame(oldItem: Recipe, newItem:Recipe) =
-            oldItem == newItem
-
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(getItem(position))
     }
 
     class ViewHolder(
-        private val binding: PostCardBinding,
-        listener: RecipeListener
+        private val binding: RecipeCardBinding,
+        private val listener: RecipeInteractionListener
     ) : RecyclerView.ViewHolder(binding.root) {
 
         private lateinit var recipe: Recipe
+
         private val popupMenu by lazy {
-            PopupMenu(itemView.context, binding.options).apply {
+            PopupMenu(itemView.context, binding.menuOptions).apply {
                 inflate(R.menu.options_post)
                 setOnMenuItemClickListener { menuItem ->
                     when (menuItem.itemId) {
@@ -52,57 +50,50 @@ class RecipesAdapter(
                         }
                         else -> false
                     }
-
                 }
             }
-        }
-
-        init {
-            binding.like.setOnClickListener {
-                listener.onLikeClicked(recipe)
-            }
-
-            binding.text.setOnClickListener {
-                listener.viewRecipeDetails(recipe)
-            }
-            binding.video.setOnClickListener {
-                listener.onVideoC
-
-            }
-
-
-
         }
 
         fun bind(recipe: Recipe) {
             this.recipe = recipe
             with(binding) {
-                authorName.text = recipe.author
-                name.text = recipe.name
-                name.text = recipe.content
-
-
-                options.setOnClickListener { popupMenu.show() }
-
+                title.text = recipe.title
+                authorName.text = recipe.authorName
+                categoryRecipe.text = recipe.categoryRecipe
+                textRecipe.text = recipe.textRecipe
+                buttonFavorite.setImageResource(getFavoriteIconResId(recipe.isFavorite))
+                buttonFavorite.setOnClickListener {
+                    listener.onFavoriteClicked(recipe.id)
+                }
+                title.setOnClickListener {
+                    listener.onSingleRecipeClicked(recipe)
+                }
+                textRecipe.setOnClickListener {
+                    listener.onSingleRecipeClicked(recipe)
+                }
+                authorName.setOnClickListener {
+                    listener.onSingleRecipeClicked(recipe)
+                }
+                categoryRecipe.setOnClickListener {
+                    listener.onSingleRecipeClicked(recipe)
+                }
+                menuOptions.setOnClickListener {
+                    popupMenu.show()
+                }
             }
         }
 
-
+        @DrawableRes
+        private fun getFavoriteIconResId(liked: Boolean) =
+            if (liked) R.drawable.icon_favourites else R.drawable.icon_not_favourite
     }
+}
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        Log.d("PostsAdapter", "onCreate:")
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = PostCardBinding.inflate(inflater, parent, false)
-        return ViewHolder(binding, interactionListener)
+private object DiffCallback : DiffUtil.ItemCallback<Recipe>() {
 
-    }
+    override fun areItemsTheSame(oldItem: Recipe, newItem: Recipe): Boolean =
+        oldItem.id == newItem.id
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Log.d("PostsAdapter", "onBind: $position")
-        val post = getItem(position)
-        holder.bind(post)
-    }
-
-
+    override fun areContentsTheSame(oldItem: Recipe, newItem: Recipe): Boolean =
+        oldItem == newItem
 }

@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:name="androidx.navigation.fragment.NavHostFragment"
     app:defaultNavHost="true"
-    app:navGraph="@navigation/nav_main"
+    app:navGraph="@navigation/nav_fragment"
     tools:context=".ui.AppActivity"
     android:id="@+id/nav_host_fragment"/>
 
