@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import ru.gtsystems.nerecipe.R
 import ru.gtsystems.nerecipe.adapter.RecipesAdapter
@@ -18,7 +18,7 @@ import ru.netology.nerecipe.ui.RecipeViewModel
 
 class FeedRecipeFragment : Fragment() {
 
-    private val viewModel: RecipeViewModel by viewModels(ownerProducer = ::requireParentFragment)
+    private val viewModel by activityViewModels<RecipeViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

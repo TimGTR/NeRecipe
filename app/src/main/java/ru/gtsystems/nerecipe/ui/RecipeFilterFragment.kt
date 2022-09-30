@@ -13,7 +13,7 @@ import ru.netology.nerecipe.ui.RecipeViewModel
 
 
 class RecipeFilterFragment : Fragment() {
-    private val viewModel: RecipeViewModel by viewModels(ownerProducer = ::requireParentFragment)
+    private val viewModel by activityViewModels<RecipeViewModel>()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
