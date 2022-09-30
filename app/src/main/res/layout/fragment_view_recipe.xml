@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context="ru.netology.nerecipe.ui.RecipeViewFragment">
+    tools:context="ru.gtsystems.nerecipe.ui.RecipeViewFragment">
 
     <TextView
         android:id="@+id/title"
@@ -61,6 +61,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/botton_menu_view" />
+        app:menu="@menu/bottom_menu_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

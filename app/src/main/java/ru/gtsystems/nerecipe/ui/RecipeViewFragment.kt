@@ -12,7 +12,7 @@ import ru.gtsystems.nerecipe.databinding.FragmentViewRecipeBinding
 
 
 class RecipeViewFragment : Fragment() {
-    private val args by navArgs<FeedRecipeFragment>()
+    private val args by navArgs<RecipeViewFragmentArgs>()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
