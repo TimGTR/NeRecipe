@@ -7,6 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.snackbar.Snackbar
 import ru.gtsystems.nerecipe.R
 import ru.gtsystems.nerecipe.databinding.ActivityAppBinding
+import ru.gtsystems.nerecipe.util.StringArg
 
 
 class AppActivity : AppCompatActivity() {
@@ -39,14 +40,18 @@ class AppActivity : AppCompatActivity() {
                 .show()
         } else {
 
-//            val fragment =
-//                supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-//            fragment.navController
-//                .navigate(R.id.action_favoriteFragment_to_feedFragment, Bundle().apply {
-//                    textArg = text
-//                })
+            val fragment =
+                supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+            fragment.navController
+                .navigate(R.id.action_favoriteFragment_to_feedFragment, Bundle().apply {
+                    textArg = text
+                })
 
         }
 
+    }
+
+    companion object {
+        var Bundle.textArg : String? by StringArg
     }
 }
