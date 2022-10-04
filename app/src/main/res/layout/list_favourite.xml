@@ -39,7 +39,7 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:contentDescription="@string/icon_background_description"
-        android:src="@drawable/ic_launcher_foreground"
+        android:src="@drawable/ic_baseline_fastfood_24"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/textBackground"
         app:layout_constraintEnd_toEndOf="parent"

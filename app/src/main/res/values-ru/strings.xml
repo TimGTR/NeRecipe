@@ -19,4 +19,5 @@
     <string name="URL">Вставьте ссылку на видео</string>
     <string name="post_text_content">Введите текст поста</string>
     <string name="video_open">Открыть видео</string>
+    <string name="text_background">избранное</string>
 </resources>
