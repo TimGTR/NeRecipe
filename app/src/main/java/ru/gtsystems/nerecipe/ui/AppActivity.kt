@@ -43,7 +43,7 @@ class AppActivity : AppCompatActivity() {
             val fragment =
                 supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
             fragment.navController
-                .navigate(R.id.action_favoriteFragment_to_feedFragment, Bundle().apply {
+                .navigate(R.id.feedFragment, Bundle().apply {
                     textArg = text
                 })
 

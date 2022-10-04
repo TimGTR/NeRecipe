@@ -2,7 +2,7 @@ package ru.gtsystems.nerecipe.repository
 
 import kotlinx.serialization.Serializable
 
-//@Serializable
+@Serializable
 data class Recipe(
     val id: Long,
     val title: String,
@@ -10,4 +10,4 @@ data class Recipe(
     val categoryRecipe: String,
     val textRecipe: String,
     val isFavorite: Boolean = false,
-)
+): java.io.Serializable
