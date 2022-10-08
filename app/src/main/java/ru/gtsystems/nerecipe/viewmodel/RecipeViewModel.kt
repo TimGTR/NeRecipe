@@ -13,7 +13,7 @@ import ru.gtsystems.nerecipe.util.Event
 class RecipeViewModel(application: Application) : AndroidViewModel(application),
     RecipeInteractionListener {
 
-    private val repository: RecipeRepository =
+    val repository: RecipeRepository =
         RecipeRepositoryImpl(dao = AppDb.getInstance(context = application).recipeDao)
 
     val data by repository::data
@@ -124,4 +124,6 @@ class RecipeViewModel(application: Application) : AndroidViewModel(application),
         repository.showMediterranean(categoryRecipe)
         filterIsActive = true
     }
+
+
 }

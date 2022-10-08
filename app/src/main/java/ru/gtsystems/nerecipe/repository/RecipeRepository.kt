@@ -11,6 +11,7 @@ interface RecipeRepository {
     fun favorite(long: Long)
     fun searchText(Text: String)
     fun getData()
+    fun getCategory(id: Long): String
 
 
     fun showEuropean(type: String)

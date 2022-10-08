@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import ru.gtsystems.nerecipe.R
@@ -27,6 +27,22 @@ class RecipeUpdateFragment : Fragment() {
     ) = FragmentUpdateBinding.inflate(layoutInflater, container, false).also { binding ->
         incomingArg(binding)
 
+
+        val categoryPoint = when (viewModel.repository.getCategory(args.idRecipe!!.id)) {
+            "European" -> 1
+            "Asian" -> 2
+            "Panasian" -> 3
+            "Eastern" -> 4
+            "American" -> 5
+            "Russian" -> 6
+            "Mediterranean" -> 7
+            else -> 0
+        }
+        binding.categoryRecipeCheckBox.check(categoryPoint)
+
+
+
+
         binding.categoryRecipeCheckBox.setOnCheckedChangeListener { _, i ->
             when (i) {
                 R.id.checkBoxEuropean -> categoryRecipeNumber = "European"
@@ -37,7 +53,10 @@ class RecipeUpdateFragment : Fragment() {
                 R.id.checkBoxRussian -> categoryRecipeNumber = "Russian"
                 R.id.checkBoxMediterranean -> categoryRecipeNumber = "Mediterranean"
             }
+
         }
+
+
 
         binding.buttonSave.setOnClickListener {
             onSaveButtonClicked(binding)
@@ -60,13 +79,18 @@ class RecipeUpdateFragment : Fragment() {
             textRecipe = textRecipe,
             categoryRecipe = categoryRecipeNumber
         )
+
         findNavController().popBackStack()
     }
 
     private fun incomingArg(binding: FragmentUpdateBinding){
+
         binding.title.setText(args.idRecipe?.title)
         binding.authorName.setText(args.idRecipe?.authorName)
         binding.textRecipe.setText(args.idRecipe?.textRecipe)
+        viewModel.updateRecipe
+
+
     }
 
     private fun emptyCheckUpdateWarning(
@@ -80,4 +104,6 @@ class RecipeUpdateFragment : Fragment() {
             false
         } else true
     }
+
+
 }

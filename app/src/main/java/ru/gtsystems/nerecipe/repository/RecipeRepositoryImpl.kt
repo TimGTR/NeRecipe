@@ -17,6 +17,10 @@ class RecipeRepositoryImpl(
         }
     }
 
+    override fun getCategory(id: Long) =
+        dao.searchCategory(id)
+
+
     override fun save(recipe: Recipe) {
         if (recipe.id == RecipeRepository.NEW_ID) dao.save(recipe = recipe.toEntity())
         else dao.updateContentById(

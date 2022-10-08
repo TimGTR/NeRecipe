@@ -41,4 +41,7 @@ interface RecipeDao {
 
     @Query("SELECT * FROM recipes WHERE title LIKE '%' || :text || '%'")
     fun searchByText(text: String): LiveData<List<RecipeEntity>>
+
+    @Query("SELECT categoryRecipe FROM recipes WHERE id = :id")
+    fun searchCategory(id: Long): String
 }
