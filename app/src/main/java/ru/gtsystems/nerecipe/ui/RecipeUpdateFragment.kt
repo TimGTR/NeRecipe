@@ -76,13 +76,13 @@ class RecipeUpdateFragment : Fragment() {
         binding.authorName.setText(args.idRecipe?.authorName)
         binding.textRecipe.setText(args.idRecipe?.textRecipe)
         when(args.idRecipe?.categoryRecipe) {
-            "European" -> binding.checkBoxEuropean.isChecked
-            "Asian" -> binding.checkBoxAsian.isChecked
-            "Panasian" -> binding.checkBoxPanasian.isChecked
-            "Eastern" -> binding.checkBoxEastern.isChecked
-            "American" -> binding.checkBoxAmerican.isChecked
-            "Russian" -> binding.checkBoxRussian.isChecked
-            "Mediterranean" -> binding.checkBoxMediterranean.isChecked
+            "European" -> binding.checkBoxEuropean.toggle()
+            "Asian" -> binding.checkBoxAsian.toggle()
+            "Panasian" -> binding.checkBoxPanasian.toggle()
+            "Eastern" -> binding.checkBoxEastern.toggle()
+            "American" -> binding.checkBoxAmerican.toggle()
+            "Russian" -> binding.checkBoxRussian.toggle()
+            "Mediterranean" -> binding.checkBoxMediterranean.toggle()
         }
 
         viewModel.updateRecipe
