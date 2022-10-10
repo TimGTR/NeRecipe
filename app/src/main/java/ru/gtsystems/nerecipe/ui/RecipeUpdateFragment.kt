@@ -27,18 +27,6 @@ class RecipeUpdateFragment : Fragment() {
         incomingArg(binding)
 
 
-        val categoryPoint = when (viewModel.repository.getCategory(args.idRecipe!!.id)) {
-            "European" -> 1
-            "Asian" -> 2
-            "Panasian" -> 3
-            "Eastern" -> 4
-            "American" -> 5
-            "Russian" -> 6
-            "Mediterranean" -> 7
-            else -> 0
-        }
-        binding.categoryRecipeCheckBox.check(categoryPoint)
-
 
 
 
@@ -87,9 +75,16 @@ class RecipeUpdateFragment : Fragment() {
         binding.title.setText(args.idRecipe?.title)
         binding.authorName.setText(args.idRecipe?.authorName)
         binding.textRecipe.setText(args.idRecipe?.textRecipe)
+        when(args.idRecipe?.categoryRecipe) {
+            "European" -> binding.checkBoxEuropean.isChecked
+            "Asian" -> binding.checkBoxAsian.isChecked
+            "Panasian" -> binding.checkBoxPanasian.isChecked
+            "Eastern" -> binding.checkBoxEastern.isChecked
+            "American" -> binding.checkBoxAmerican.isChecked
+            "Russian" -> binding.checkBoxRussian.isChecked
+            "Mediterranean" -> binding.checkBoxMediterranean.isChecked
+        }
 
-
-        binding.categoryRecipeCheckBox.check(categoryRecipeNum(args.idRecipe?.categoryRecipe))
         viewModel.updateRecipe
 
 
@@ -107,17 +102,6 @@ class RecipeUpdateFragment : Fragment() {
         } else true
     }
 
-    private fun categoryRecipeNum(category: String?) =
-        when (category) {
-            "European" -> 1
-            "Asian" -> 2
-            "Panasian" -> 3
-            "Eastern" -> 4
-            "American" -> 5
-            "Russian" -> 6
-            "Mediterranean" -> 7
-            else -> 0
-        }
 
 
 }
