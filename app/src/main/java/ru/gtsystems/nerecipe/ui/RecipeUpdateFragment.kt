@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -88,6 +87,9 @@ class RecipeUpdateFragment : Fragment() {
         binding.title.setText(args.idRecipe?.title)
         binding.authorName.setText(args.idRecipe?.authorName)
         binding.textRecipe.setText(args.idRecipe?.textRecipe)
+
+
+        binding.categoryRecipeCheckBox.check(categoryRecipeNum(args.idRecipe?.categoryRecipe))
         viewModel.updateRecipe
 
 
@@ -104,6 +106,18 @@ class RecipeUpdateFragment : Fragment() {
             false
         } else true
     }
+
+    private fun categoryRecipeNum(category: String?) =
+        when (category) {
+            "European" -> 1
+            "Asian" -> 2
+            "Panasian" -> 3
+            "Eastern" -> 4
+            "American" -> 5
+            "Russian" -> 6
+            "Mediterranean" -> 7
+            else -> 0
+        }
 
 
 }
